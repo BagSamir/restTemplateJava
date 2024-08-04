@@ -8,14 +8,10 @@ import java.util.List;
 public class DemoApplication {
 
     private static final String BASE_URL = "http://94.198.50.185:7081/api/users";
-    private final RestTemplate restTemplate;
-    private final HttpHeaders headers;
+    private final RestTemplate restTemplate = new RestTemplate();
+    private final HttpHeaders headers = new HttpHeaders();
     private String sessionId;
 
-    public DemoApplication() {
-        this.restTemplate = new RestTemplate();
-        this.headers = new HttpHeaders();
-    }
 
     public void fetchAllUsers() {
         ResponseEntity<String> response = restTemplate.exchange(BASE_URL, HttpMethod.GET, new HttpEntity<>(headers), String.class);
